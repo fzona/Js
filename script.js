@@ -1,19 +1,22 @@
-//script para que un usuario ingrese las acciones bursátiles que tiene en su portfolio
+const portafolio = [];
 
-let portfolio = 0;
-let accion = prompt("Por favor ingresa una acción que se encuentre en tu portfolio");
-
-while (accion != "END") {
-
-    if (portfolio == 0) {
-        portfolio = accion;
-    } else {
-        portfolio = portfolio + ", " + accion;
-    }
-    //Agrego la accion al portfolio
-
-    accion = prompt("Por favor ingresa otra acción o escribe END para terminar:");
-   
+class Accion {
+  constructor(accion) {
+    this.nombre = accion.nombre;
+    this.costo = accion.costo;
+    this.precio = accion.precio;
+    this.rendimiento = (((this.precio / this.costo) - 1)*100).toFixed(2)+"%";
+  }
 }
 
-console.log(`El portfolio esta compuesto por: ${portfolio}`);
+let entrada = prompt("Quieres agregar una acción a tu portafolio? (Si o No)");
+
+while (entrada === "Si") {
+  let nuevoNombre = prompt("Ingresa el nombre de la acción");
+  let nuevoCosto = parseInt(prompt("Ingresa a cuanto la compraste"));
+  let nuevoPrecio = parseInt(prompt("A que valor cerró el día de hoy?"));
+  let accionNueva = new Accion({nombre: nuevoNombre,costo: nuevoCosto,precio: nuevoPrecio});
+  portafolio.push(accionNueva);
+  entrada = prompt("Quieres agregar una nueva acción a tu portafolio? (Si o No)");
+}
+console.log(portafolio);
