@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "main.scss",
+        "parciales/index.scss"
+    ],
+    "names": [],
+    "file": "main.css"
+}
