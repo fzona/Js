@@ -18,6 +18,10 @@ formulario.addEventListener("submit", function (e) {
     precio: precio.value,
     rendimiento: (((precio.value / costo.value) - 1) * 100).toFixed(2) + "%"
   });
+
+  //Guardo la nueva array en el local storage
+  localStorage.setItem("portafolio", JSON.stringify(portafolio));
+
   //Agrego un header a la tabla ya existente
   tabla.innerHTML = `  <thead>
   <tr>
@@ -28,14 +32,21 @@ formulario.addEventListener("submit", function (e) {
   </tr>
 </thead>`;
 
+
+  //Llamo la información del local Storage y la parseo
+  const portafolioLocalStorage = JSON.parse(localStorage.getItem("portafolio"));
+
   //Por cada acción que el usuario agrega, se agrega una fila a la tabla utilizando los elementos de la array
-  for (const accion of portafolio) {
+  for (const accion of portafolioLocalStorage) {
     let fila = document.createElement("tr"); //Creo la fila
 
     fila.innerHTML = `<td>${accion.nombre}</td> 
   <td>${accion.costo}</td>
   <td>${accion.precio}</td>
-  <td>${accion.rendimiento}</td>`
+  <td id ="rendimiento" class = "rendPositivo">${accion.rendimiento}</td>`
     tabla.appendChild(fila);
+
+    // Utilizando un operador ternario 
+    document.getElementById("rendimiento") > 0 ? document.getElementById("rendimiento").className = "rendPositivo" : document.getElementById("rendimiento").className = "rendNegativo";
   }
 })

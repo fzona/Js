@@ -1,1 +1,15 @@
-/* No CSS *//*# sourceMappingURL=main.css.map */
+.rendPositivo {
+  color: green;
+}
+
+.rendNegativo {
+  color: red;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/*# sourceMappingURL=main.css.map */
