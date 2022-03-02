@@ -30,9 +30,11 @@ formulario.addEventListener("submit", function (e) {
     <th scope="col">Cotización del día</th>
     <th scope="col">Rendimiento</th>
   </tr>
-</thead>`;
+</thead>
+<tbody id = "body">
+</tbody>`;
 
-
+  const body = document.getElementById("body");
   //Llamo la información del local Storage y la parseo
   const portafolioLocalStorage = JSON.parse(localStorage.getItem("portafolio"));
 
@@ -43,10 +45,12 @@ formulario.addEventListener("submit", function (e) {
     fila.innerHTML = `<td>${accion.nombre}</td> 
   <td>${accion.costo}</td>
   <td>${accion.precio}</td>
-  <td id ="rendimiento" class = "rendPositivo">${accion.rendimiento}</td>`
-    tabla.appendChild(fila);
+  <td id ="${accion.nombre}">${accion.rendimiento}</td>`;
 
+  
+  body.appendChild(fila);
+  
+  parseInt(accion.rendimiento) > 0 ? document.getElementById(accion.nombre).className = "rendPositivo" : document.getElementById(accion.nombre).className = "rendNegativo";
     // Utilizando un operador ternario 
-    document.getElementById("rendimiento") > 0 ? document.getElementById("rendimiento").className = "rendPositivo" : document.getElementById("rendimiento").className = "rendNegativo";
   }
 })
