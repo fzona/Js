@@ -50,7 +50,8 @@ formulario.addEventListener("submit", function (e) {
   
   body.appendChild(fila);
   
+  //Utilizando un operador ternario, le determino la clase a al texto de la columna rendimiento dependiendo si el mismo es positivo o negativo
   parseInt(accion.rendimiento) > 0 ? document.getElementById(accion.nombre).className = "rendPositivo" : document.getElementById(accion.nombre).className = "rendNegativo";
-    // Utilizando un operador ternario 
+ 
   }
 })
