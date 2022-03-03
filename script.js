@@ -53,4 +53,13 @@ formulario.addEventListener("submit", function (e) {
   parseInt(accion.rendimiento) > 0 ? document.getElementById(accion.nombre).className = "rendPositivo" : document.getElementById(accion.nombre).className = "rendNegativo";
     // Utilizando un operador ternario 
   }
+  Toastify({
+    text: "Has agregado una acción a tu portafolio",
+    duration: 2000,
+    gravity: "bottom",
+    position: "right",
+    style: {
+      background: "linear-gradient(to right, #6f0abd, #5d079e)"
+    }
+}).showToast();
 })
