@@ -34,25 +34,31 @@
         </div>
     </nav>
     <main>
-        <h3>Busca una acción</h3>
-        <form action="" method="get" id="search">
-            <input type="text" id="searchAccion" name="searchAccion">
-            <input type="submit" value="Buscar">
-        </form>
+        <div>
+            <h3>Busca una acción</h3>
+            <form autocomplete="off" id="search">
+                <div class="autocomplete" style="width:300px;">
+                    <input id="searchAccion" type="text" name="searchAccion" placeholder="Ticker">
+                </div>
+                <input type="submit" value="Buscar">
+            </form>
+        </div>
+        <div id="contenedor"></div>
+        <div>
+            <h3>Ingresa tu Portafolio</h3>
+            <form action="" method="get" id="formulario">
+                <label for="nombreAccion">Nombre de la acción</label>
+                <input type="text" id="nombreAccion" name="nombreAccion">
+                <label for="costo">Precio de compra</label>
+                <input type="number" id="costo" name="costo">
+                <label for="precio">Precio final del día</label>
+                <input type="number" id="precio" name="precio">
+                <input type="submit" value="Agregar">
+            </form>
+            <table class="table table-striped" id="tabla">
 
-        <h3>Ingresa tu Portafolio</h3>
-        <form action="" method="get" id="formulario">
-            <label for="nombreAccion">Nombre de la acción</label>
-            <input type="text" id="nombreAccion" name="nombreAccion">
-            <label for="costo">Precio de compra</label>
-            <input type="number" id="costo" name="costo">
-            <label for="precio">Precio final del día</label>
-            <input type="number" id="precio" name="precio">
-            <input type="submit" value="Agregar">
-        </form>
-        <table class="table table-striped" id="tabla">
-
-        </table>
+            </table>
+        </div>
     </main>
     <footer>
 
@@ -60,6 +66,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="./script.js"></script>
     <script src="./api.js"></script>
+    <script src="./searchbar.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
