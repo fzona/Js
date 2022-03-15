@@ -6,6 +6,20 @@
   color: red;
 }
 
+.card {
+  width: 300px;
+  margin-bottom: 2px;
+  margin-top: 2px;
+}
+
+.card h3 {
+  color: #2B0548;
+}
+
+.card h3 p {
+  color: grey;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -16,6 +30,7 @@
 .autocomplete {
   position: relative;
   display: inline-block;
+  margin-bottom: 2px;
 }
 
 input {
@@ -62,7 +77,7 @@ input[type=submit] {
   color: #ffffff;
 }
 
-.card {
-  width: 300px;
+.portafolio {
+  margin-top: 50px;
 }
 /*# sourceMappingURL=main.css.map */
