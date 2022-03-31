@@ -42,8 +42,8 @@
                 </div>
                 <input type="submit" value="Buscar">
             </form>
+            <div id="results"></div>
         </section>
-        <div id="contenedor"></div>
         <section class="portafolio">
             <h3>Ingresa tu Portafolio</h3>
             <form action="" method="get" id="formulario">
@@ -56,7 +56,16 @@
                 <input type="submit" value="Agregar">
             </form>
             <table class="table table-striped" id="tabla">
-
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio de compra</th>
+                        <th scope="col">Cotización del día</th>
+                        <th scope="col">Rendimiento</th>
+                    </tr>
+                </thead>
+                <tbody id="body">
+                </tbody>
             </table>
         </section>
     </main>

@@ -80,4 +80,8 @@ input[type=submit] {
 .portafolio {
   margin-top: 50px;
 }
+
+.ocultar {
+  display: none;
+}
 /*# sourceMappingURL=main.css.map */
