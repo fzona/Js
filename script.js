@@ -11,23 +11,41 @@ const body = document.getElementById("body");
 
 document.addEventListener("DOMContentLoaded", tablaPorta);
 
+class Accion {
+    constructor(nombre, costo, precio) {
+        this.nombre = nombre;
+        this.costo = costo;
+        this.precio = precio;
+        this.rendimiento = (((this.precio / this.costo) - 1)*100).toFixed(2)+"%";
+    }
+}
 
 //Le agrego un evento para que escuche cuando el usuario hace submit al formulario
 formulario.addEventListener("submit", function (e) {
   e.preventDefault();
+  //Creo una nueva accion con los valores introducidos por el usuario
+  const nuevaAccion = new Accion(nombre.value, costo.value, precio.value);
 
-  //Agrega a la array vacia el nombre, costo y precio ingresado por el usuario por cada acción. Y a su vez calcula el rendimiento de la misma de acuerdo al costo y precio final del día
-  portafolio.push({
-    nombre: nombre.value,
-    costo: costo.value,
-    precio: precio.value,
-    rendimiento: (((precio.value / costo.value) - 1) * 100).toFixed(2) + "%"
-  });
+  portafolio.push(nuevaAccion);
+  //Agrega la nueva accion al portafolio
 
   //Guardo la nueva array en el local storage
   localStorage.setItem("portafolio", JSON.stringify(portafolio));
 
+  //Creo una nueva fila en la tabla
+  let r = body.insertRow();
+  let cell1=r.insertCell();
+  let cell2=r.insertCell();
+  let cell3=r.insertCell();
+  let cell4=r.insertCell();
 
+  //Defino el valor para cada celda de la nueva fila
+  cell1.innerHTML=nuevaAccion.nombre;
+  cell2.innerHTML=nuevaAccion.costo;
+  cell3.innerHTML=nuevaAccion.precio;
+  cell4.innerHTML=nuevaAccion.rendimiento;
+
+  //Envio un mensaje al usuario de que ha agregado una nueva acción al portafolio
   Toastify({
     text: "Has agregado una acción a tu portafolio",
     duration: 2000,
@@ -39,6 +57,7 @@ formulario.addEventListener("submit", function (e) {
 }).showToast();
 })
 
+//Esta función se encarga de mostrar las acciones que hay en el local storage en la tabla, si no existen acciones, hace que la tabla no sea vea
 function tablaPorta() {
   if (portafolio.length === 0) {
     tabla.className = "ocultar";
