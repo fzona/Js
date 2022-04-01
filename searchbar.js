@@ -1,556 +1,61 @@
-let tickers = [
-    "BRKB",
-    "BFB",
-    "AOS",
-    "ABT",
-    "ABBV",
-    "ACN",
-    "ATVI",
-    "AYI",
-    "ADBE",
-    "AAP",
-    "AMD",
-    "AES",
-    "AMG",
-    "AFL",
-    "A",
-    "APD",
-    "ALK",
-    "AKAM",
-    "ALB",
-    "ARE",
-    "ALXN",
-    "ALGN",
-    "ALLE",
-    "AGN",
-    "ADS",
-    "LNT",
-    "ALL",
-    "GOOGL",
-    "GOOG",
-    "MO",
-    "AMZN",
-    "AEE",
-    "AAL",
-    "AEP",
-    "AXP",
-    "AIG",
-    "AMT",
-    "AWK",
-    "AMP",
-    "ABC",
-    "AME",
-    "AMGN",
-    "APH",
-    "APC",
-    "ADI",
-    "ANSS",
-    "ANTM",
-    "AON",
-    "APA",
-    "AIV",
-    "AAPL",
-    "AMAT",
-    "APTV",
-    "ADM",
-    "ARNC",
-    "AJG",
-    "AIZ",
-    "T",
-    "ADSK",
-    "ADP",
-    "AZO",
-    "AVB",
-    "AVY",
-    "BHGE",
-    "BLL",
-    "BAC",
-    "BAX",
-    "BBT",
-    "BDX",
-    "BBY",
-    "BIIB",
-    "BLK",
-    "HRB",
-    "BA",
-    "BKNG",
-    "BWA",
-    "BXP",
-    "BSX",
-    "BHF",
-    "BMY",
-    "AVGO",
-    "CHRW",
-    "COG",
-    "CDNS",
-    "CPB",
-    "COF",
-    "CAH",
-    "KMX",
-    "CCL",
-    "CAT",
-    "CBOE",
-    "CBRE",
-    "CBS",
-    "CELG",
-    "CNC",
-    "CNP",
-    "CTL",
-    "CERN",
-    "CF",
-    "SCHW",
-    "CHTR",
-    "CVX",
-    "CMG",
-    "CB",
-    "CHD",
-    "CI",
-    "XEC",
-    "CINF",
-    "CTAS",
-    "CSCO",
-    "C",
-    "CFG",
-    "CTXS",
-    "CME",
-    "CMS",
-    "KO",
-    "CTSH",
-    "CL",
-    "CMCSA",
-    "CMA",
-    "CAG",
-    "CXO",
-    "COP",
-    "ED",
-    "STZ",
-    "GLW",
-    "COST",
-    "COTY",
-    "CCI",
-    "CSX",
-    "CMI",
-    "CVS",
-    "DHI",
-    "DHR",
-    "DRI",
-    "DVA",
-    "DE",
-    "DAL",
-    "XRAY",
-    "DVN",
-    "DLR",
-    "DFS",
-    "DISCA",
-    "DISCK",
-    "DISH",
-    "DG",
-    "DLTR",
-    "D",
-    "DOV",
-    "DWDP",
-    "DTE",
-    "DUK",
-    "DRE",
-    "DXC",
-    "ETFC",
-    "EMN",
-    "ETN",
-    "EBAY",
-    "ECL",
-    "EIX",
-    "EW",
-    "EA",
-    "EMR",
-    "ETR",
-    "EOG",
-    "EQT",
-    "EFX",
-    "EQIX",
-    "EQR",
-    "ESS",
-    "EL",
-    "RE",
-    "ES",
-    "EXC",
-    "EXPE",
-    "EXPD",
-    "EXR",
-    "XOM",
-    "FFIV",
-    "FB",
-    "FAST",
-    "FRT",
-    "FDX",
-    "FIS",
-    "FITB",
-    "FE",
-    "FISV",
-    "FLIR",
-    "FLS",
-    "FLR",
-    "FMC",
-    "FL",
-    "F",
-    "FTV",
-    "FBHS",
-    "BEN",
-    "FCX",
-    "GPS",
-    "GRMN",
-    "IT",
-    "GD",
-    "GE",
-    "GIS",
-    "GM",
-    "GPC",
-    "GILD",
-    "GPN",
-    "GS",
-    "GT",
-    "GWW",
-    "HAL",
-    "HBI",
-    "HOG",
-    "HRS",
-    "HIG",
-    "HAS",
-    "HCA",
-    "HCP",
-    "HP",
-    "HSIC",
-    "HES",
-    "HPE",
-    "HLT",
-    "HOLX",
-    "HD",
-    "HON",
-    "HRL",
-    "HST",
-    "HPQ",
-    "HUM",
-    "HBAN",
-    "HII",
-    "IDXX",
-    "INFO",
-    "ITW",
-    "ILMN",
-    "INCY",
-    "IR",
-    "INTC",
-    "ICE",
-    "IBM",
-    "IP",
-    "IPG",
-    "IFF",
-    "INTU",
-    "ISRG",
-    "IVZ",
-    "IPGP",
-    "IQV",
-    "IRM",
-    "JBHT",
-    "JEC",
-    "SJM",
-    "JNJ",
-    "JCI",
-    "JPM",
-    "JNPR",
-    "KSU",
-    "K",
-    "KEY",
-    "KMB",
-    "KIM",
-    "KMI",
-    "KLAC",
-    "KSS",
-    "KHC",
-    "KR",
-    "LB",
-    "LLL",
-    "LH",
-    "LRCX",
-    "LEG",
-    "LEN",
-    "LLY",
-    "LNC",
-    "LKQ",
-    "LMT",
-    "L",
-    "LOW",
-    "LYB",
-    "MAC",
-    "M",
-    "MRO",
-    "MPC",
-    "MAR",
-    "MMC",
-    "MLM",
-    "MAS",
-    "MA",
-    "MAT",
-    "MKC",
-    "MCD",
-    "MCK",
-    "MDT",
-    "MRK",
-    "MET",
-    "MTD",
-    "MGM",
-    "KORS",
-    "MCHP",
-    "MU",
-    "MSFT",
-    "MAA",
-    "MHK",
-    "TAP",
-    "MDLZ",
-    "MNST",
-    "MCO",
-    "MS",
-    "MSI",
-    "MTB",
-    "MYL",
-    "NDAQ",
-    "NOV",
-    "NAVI",
-    "NKTR",
-    "NTAP",
-    "NFLX",
-    "NWL",
-    "NFX",
-    "NEM",
-    "NWSA",
-    "NWS",
-    "NEE",
-    "NLSN",
-    "NKE",
-    "NI",
-    "NBL",
-    "JWN",
-    "NSC",
-    "NTRS",
-    "NOC",
-    "NCLH",
-    "NRG",
-    "NUE",
-    "NVDA",
-    "ORLY",
-    "OXY",
-    "OMC",
-    "OKE",
-    "ORCL",
-    "PCAR",
-    "PKG",
-    "PH",
-    "PAYX",
-    "PYPL",
-    "PNR",
-    "PBCT",
-    "PEP",
-    "PKI",
-    "PRGO",
-    "PFE",
-    "PCG",
-    "PM",
-    "PSX",
-    "PNW",
-    "PXD",
-    "PNC",
-    "RL",
-    "PPG",
-    "PPL",
-    "PX",
-    "PFG",
-    "PG",
-    "PGR",
-    "PLD",
-    "PRU",
-    "PEG",
-    "PSA",
-    "PHM",
-    "PVH",
-    "QRVO",
-    "QCOM",
-    "PWR",
-    "DGX",
-    "RRC",
-    "RJF",
-    "RTN",
-    "O",
-    "RHT",
-    "REG",
-    "REGN",
-    "RF",
-    "RSG",
-    "RMD",
-    "RHI",
-    "ROK",
-    "ROP",
-    "ROST",
-    "RCL",
-    "SPGI",
-    "CRM",
-    "SBAC",
-    "SLB",
-    "STX",
-    "SEE",
-    "SRE",
-    "SHW",
-    "SPG",
-    "SWKS",
-    "SLG",
-    "SNA",
-    "SO",
-    "LUV",
-    "SWK",
-    "SBUX",
-    "STT",
-    "SRCL",
-    "SYK",
-    "STI",
-    "SIVB",
-    "SYMC",
-    "SYF",
-    "SNPS",
-    "SYY",
-    "TROW",
-    "TTWO",
-    "TPR",
-    "TGT",
-    "TEL",
-    "FTI",
-    "TXN",
-    "TXT",
-    "BK",
-    "CLX",
-    "COO",
-    "HSY",
-    "MOS",
-    "TRV",
-    "DIS",
-    "TMO",
-    "TIF",
-    "TJX",
-    "TMK",
-    "TSS",
-    "TSCO",
-    "TDG",
-    "TRIP",
-    "FOXA",
-    "FOX",
-    "TSN",
-    "USB",
-    "UDR",
-    "ULTA",
-    "UAA",
-    "UA",
-    "UNP",
-    "UAL",
-    "UNH",
-    "UPS",
-    "URI",
-    "UTX",
-    "UHS",
-    "UNM",
-    "VFC",
-    "VLO",
-    "VAR",
-    "VTR",
-    "VRSN",
-    "VRSK",
-    "VZ",
-    "VRTX",
-    "VIAB",
-    "V",
-    "VNO",
-    "VMC",
-    "WMT",
-    "WBA",
-    "WM",
-    "WAT",
-    "WEC",
-    "WFC",
-    "WELL",
-    "WDC",
-    "WU",
-    "WRK",
-    "WY",
-    "WHR",
-    "WMB",
-    "WLTW",
-    "WYNN",
-    "XEL",
-    "XRX",
-    "XLNX",
-    "XYL",
-    "YUM",
-    "ZBH",
-    "ZION",
-    "ZTS",
-    "TSLA",
-    "MSFT",
-    "TWOU",
-    "LYFT",
-    "UBER",
-    "RTN",
-    ];
-
     function autocompletar(inp, arr) {
       //la funcion de autocompletar lleva dos argumentos, el input y un array de posibles valores a autocompletar
       var currentFocus;
       //ejectua la función cuando el usuario escribe en el campo de busqueda
-      inp.addEventListener("input", function(e) {
-          var a, b, i, val = this.value;
-          //elimina las opciones de autocompletar que no correspondan
-          closeAllLists();
-          if (!val) { return false;}
-          currentFocus = -1;
-          //crea un div con los valores que se ingresan
-          a = document.createElement("div");
-          a.setAttribute("id", this.id + "autocomplete-list");
-          a.setAttribute("class", "autocomplete-items");
-          //se hace append de ese div al contenedor
-          this.parentNode.appendChild(a);
-          /*for each item in the array...*/
-          for (i = 0; i < arr.length; i++) {
-            //revisa si el item comienza con las misma letras que las ingresadas en el input
-            if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-              //crea un div para cada elemento que sea igual a lo ingresado
-              b = document.createElement("DIV");
-              //pone las letras que coinciden en negrita
-              b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-              b.innerHTML += arr[i].substr(val.length);
-              b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-                  b.addEventListener("click", function(e) {
-                  inp.value = this.getElementsByTagName("input")[0].value;
-                  //cierra la lista de los valores autocompletados
-                  closeAllLists();
-              });
-              a.appendChild(b);
-            }
+      inp.addEventListener("input", function (e) {
+        var a, b, i, val = this.value;
+        //elimina las opciones de autocompletar que no correspondan
+        closeAllLists();
+        if (!val) {
+          return false;
+        }
+        currentFocus = -1;
+        //crea un div con los valores que se ingresan
+        a = document.createElement("div");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        //se hace append de ese div al contenedor
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+          //revisa si el item comienza con las misma letras que las ingresadas en el input
+          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            //crea un div para cada elemento que sea igual a lo ingresado
+            b = document.createElement("DIV");
+            //pone las letras que coinciden en negrita
+            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+            b.innerHTML += arr[i].substr(val.length);
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            b.addEventListener("click", function (e) {
+              inp.value = this.getElementsByTagName("input")[0].value;
+              //cierra la lista de los valores autocompletados
+              closeAllLists();
+            });
+            a.appendChild(b);
           }
+        }
       });
 
-      inp.addEventListener("keydown", function(e) {
-          var x = document.getElementById(this.id + "autocomplete-list");
-          if (x) x = x.getElementsByTagName("div");
-          if (e.keyCode == 40) {
-            //Si se preciosa la tecla de flecha para abajo, aumenta el focus y hace el item más visible
-            currentFocus++;
-            addActive(x);
-          } else if (e.keyCode == 38) { //up
+      inp.addEventListener("keydown", function (e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+          //Si se preciosa la tecla de flecha para abajo, aumenta el focus y hace el item más visible
+          currentFocus++;
+          addActive(x);
+        } else if (e.keyCode == 38) { //up
           //Si se preciosa la tecla de flecha para arriba, disminuye el focus y hace el item más visible
-            currentFocus--;
-            addActive(x);
-          } else if (e.keyCode == 13) {
-            //Previene que se envíe el formulario si el usuario presiona la tecla ENTER y simula un click en el item activo
-            e.preventDefault();
-            if (currentFocus > -1) {
-              if (x) x[currentFocus].click();
-            }
+          currentFocus--;
+          addActive(x);
+        } else if (e.keyCode == 13) {
+          //Previene que se envíe el formulario si el usuario presiona la tecla ENTER y simula un click en el item activo
+          e.preventDefault();
+          if (currentFocus > -1) {
+            if (x) x[currentFocus].click();
           }
+        }
       });
+
       function addActive(x) {
         //funcion para clasificar un item como activo
         if (!x) return false;
@@ -560,25 +65,34 @@ let tickers = [
         //agrega la clase autocomplete-active
         x[currentFocus].classList.add("autocomplete-active");
       }
+
       function removeActive(x) {
         //funcion para remover la clase de activo de los items de autocomplete
         for (var i = 0; i < x.length; i++) {
           x[i].classList.remove("autocomplete-active");
         }
       }
+
       function closeAllLists(elmnt) {
         //cierra todas las listas de autocompletar, salvo aquellas que coincidan con lo ingresado
         var x = document.getElementsByClassName("autocomplete-items");
         for (var i = 0; i < x.length; i++) {
           if (elmnt != x[i] && elmnt != inp) {
-          x[i].parentNode.removeChild(x[i]);
+            x[i].parentNode.removeChild(x[i]);
+          }
         }
       }
-    }
-    //cierra las listas de autocompletar cuando el usuario hace click en el documento
-    document.addEventListener("click", function (e) {
+      //cierra las listas de autocompletar cuando el usuario hace click en el documento
+      document.addEventListener("click", function (e) {
         closeAllLists(e.target);
-    });
+      });
     }
 
-    autocompletar(document.getElementById("searchAccion"), tickers);
+    //Hago un fetch al archivo json para obtener los tickers posibles para la lista de autocompletar
+    fetch('./json/tickers.json')
+      .then(res => res.json()) 
+      .then(data => {
+        const tickers = data;
+
+        autocompletar(document.getElementById("searchAccion"), tickers);
+      })
