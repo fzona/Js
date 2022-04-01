@@ -90,7 +90,7 @@
 
     //Hago un fetch al archivo json para obtener los tickers posibles para la lista de autocompletar
     fetch('./json/tickers.json')
-      .then(res => res.json()) 
+      .then(res => res.json())
       .then(data => {
         const tickers = data;
 
