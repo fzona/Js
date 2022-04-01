@@ -98,7 +98,7 @@ function tablaPorta() {
     }
   }};
 
-
+//Con esta funcion elimino una entrada del local storage y de la tabla al presionar el boton eliminar
 body.onclick = function(e){
   if(e.target && e.target.classList.contains("eliminar")){
     eliminar(e.target.id);
@@ -122,6 +122,8 @@ body.onclick = function(e){
   }actualizarTabla();
 }
 
+
+//Esta funcion actualiza la tabla con las acciones que hay en el local storage
 function actualizarTabla(){
   let str ="";
   for (let i = 0; i < portafolio.length; i += 1) {
